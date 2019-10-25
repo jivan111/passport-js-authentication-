@@ -19,13 +19,20 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
-var users=[ ];
+
+
+var abc=email=>{return users.find((user)=>{
+    console.log(email,user.email)
+    return user.email==email})}
 initialise(passport,
-    email=>{users.find((user)=>{user.email==email})},
-    id=>{users.find(user=>{user.id==id})})
-    
+    abc,
+    id=>{return users.find(user=>{return user.id==id})})
+    var users=[ ];   
 app.get("/",(req,res)=>{
     res.render("index.ejs")
+})
+app.get("/index",(req,res)=>{
+  res.render("index.ejs")
 })
 app.get("/login",(req,res)=>{
    res.render("login.ejs")
@@ -59,6 +66,7 @@ app.post("/login",passport.authenticate("local",{
 }
 ))
 
+console.log(abc);
 app.listen(3000,()=>{
-    console.log("fine");
+    console.log("fi");
 })

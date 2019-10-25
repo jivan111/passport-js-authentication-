@@ -3,6 +3,7 @@ const bcrypt =require("bcrypt")
 module.exports=function initilisePL(passport,getUserByEmail,getUserById){
     
   const authenticateUser=async function(email,password,done){
+    console.log(email,password);
     const user=getUserByEmail(email);
     
     console.log(user)
